@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Elv Project 2</title>
+</head>
+<body>
+  
+  <h1>The Form</h1>
+
+  <form onsubmit="return false">
+    <input type="text" id="theInput" onchange="updateHeading(this.value)">
+    <h2 id="heading">Type somthing above</h1>
+      <button type="button" onclick="alertValue()">Alert Value</button>
+  </form>
+
+  <form onsubmit="return false">
+    <input type="text" id="theLiveInput" onkeyup="liveUpdateHeading(this.value)">
+    <h2 id="liveHeading">Now Start Typing here</h1>
+  </form>
+
+  <script>
+    function alertValue(){
+      alert(document.getElementById('theInput').value);
+    }
+    function updateHeading(value){
+      textColor = (value.length > 10)? 'red':'black';
+      element = document.getElementById('heading');
+      element.innerText = value;
+      element.style.color = textColor;
+      if(value.length === 0){element.innerText = 'Type somthing above'}
+    }
+    function liveUpdateHeading(value){
+      textColor = (value.length > 10)? 'red':'black';
+      element = document.getElementById('liveHeading');
+      element.innerText = value;
+      element.style.color = textColor;
+      if(value.length === 0){element.innerText = 'Now Start Typing here'}
+    }
+  </script>
+
+</body>
+</html>

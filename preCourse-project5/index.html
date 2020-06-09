@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Elv Project 5</title>
+</head>
+<body>
+  
+  <script>
+
+    let clerks = ['Dante Hicks', 'Randal Graves','Elias Grover'];
+    let managers = ['Brian Halloran','Jeff Anderson'];
+    let ceo = ['Kevin Smith'];
+
+    demote('Kevina Smith');
+    demote('Dante Hicks');
+    demote('Dante Hicks');
+    demote('Dante Hicks');
+    demote('Randal Graves');
+    demote('Randal Graves');
+    demote('Kevin Smith');
+    demote('Jeff Anderson');
+    
+
+
+    function promotion(name){
+
+      let longestLength = (clerks.length > managers.length)? clerks.length : managers.length;
+      longestLength = (ceo.length > longestLength)?ceo.length:longestLength;
+
+      for(let index = 0; index < longestLength; index++) {
+
+        if(name === clerks[index]){
+
+          clerks.splice(index,1);
+          managers.push(name);
+          console.log(`${name} has been promoted to a manager!`);
+          break;
+
+        } else if(name === managers[index]) {
+
+          managers.splice(index,1);
+          ceo.push(name);
+          console.log(`${name} has been promoted to a CEO!`);
+          break;
+
+        } else if(name === ceo[index]) {
+
+          console.log(`Can't promote ${name}, he is already a CEO!`);
+          break;
+
+        }
+
+        if(index === longestLength-1){
+          console.log(`Can't find a worker named ${name}!`);
+        }
+
+      }
+
+    }
+
+    function demote(name){
+
+      let longestLength = (clerks.length > managers.length)? clerks.length : managers.length;
+      longestLength = (ceo.length > longestLength)?ceo.length:longestLength;
+
+      for(let index = 0; index < longestLength; index++) {
+
+        if(name === clerks[index]){
+
+          clerks.splice(index,1);
+          console.log(`${name} has been fired!`);
+          break;
+
+        } else if(name === managers[index]) {
+
+          managers.splice(index,1);
+          clerks.push(name);
+          console.log(`${name} has been demoted to a clerk!`);
+          break;
+
+        } else if(name === ceo[index]) {
+
+          console.log(`Can't demote ${name}, he is the CEO!`);
+          break;
+
+        }
+
+        if(index === longestLength-1){
+          console.log(`Can't find a worker named ${name}!`);
+        }
+
+      }
+
+    }
+
+
+  </script>
+
+</body>
+</html>

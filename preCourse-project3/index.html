@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Elv Project 3</title>
+</head>
+<body>
+  
+  <script>
+    let shoppingCart = [];
+
+    function addToCart(itemName, itemPrice){
+      let item = {name:itemName, price:itemPrice};
+      shoppingCart.push(item);
+    }
+
+    function priceCheck(itemName){
+
+      let returnedPrice = -1;
+      for (const item of shoppingCart) {
+        returnedPrice = (itemName === item.name)? item.price : returnedPrice;
+      }
+
+      if(returnedPrice >= 0){
+        console.log(`The price is: $${returnedPrice.toLocaleString()}`);
+      } else {
+        console.log('the searched item is not in the shopping cart array!');
+      }
+
+    }
+
+    function totalPriceCheck(){
+      let returnedPrice = 0;
+      for (const item of shoppingCart) {
+        returnedPrice += item.price;
+      }
+      console.log(`The total cart price is: $${returnedPrice.toLocaleString()}`);
+    }
+    totalPriceCheck();
+    addToCart('iphone', 1200);
+    totalPriceCheck();
+    addToCart('bag', 500);
+    addToCart('car', 22000);
+    totalPriceCheck();
+
+    priceCheck('bag');
+    priceCheck('iphone');
+    priceCheck('car');
+    priceCheck('kundi');
+
+
+  </script>
+
+
+
+6. The priceCheck function should search through the shoppingCart array via a loop, and find the price of a given item. The
+given item will come from the shoppingCart function's argument. For example invoking priceCheck("apple"); might
+console.log “$3”.
+7. If the priceCheck function cannot find the given item, console.log "the searched item is not in the shopping cart array!";
+8. Lastly, create a function called totalPriceCheck that console.log's the total of all shoppingCart items together.
+9. Test things out. Add some items to the shoppingCart array, and then run the priceCheck and totalPriceCheck functions.
+</body>
+</html>

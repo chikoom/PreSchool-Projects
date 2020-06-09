@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Elv Project 1</title>
+</head>
+<body>
+  
+  <h1>Bank</h1>
+
+  <p>Wallet: <span id="wallet"></span></p>
+  <p>Bank: <span id="bank"></span></p>
+
+  <p id="message">Welcome to our bank!</p>
+
+  <input type="number" id="amount" />
+  <button type="button" onclick="withdraw(Number(document.getElementById('amount').value))">Withdraw</button>
+  <button type="button" onclick="deposit(Number(document.getElementById('amount').value))">Deposit</button>
+
+
+
+  <script>
+    let bank = 1000;
+    let wallet = 500;
+
+    const cantWithdraw = "You don't have sufficient founds in bank.";
+    const cantDeposit = "You don't have sufficient founds in wallet.";
+
+    document.getElementById('wallet').innerText = wallet;
+    document.getElementById('bank').innerText = bank;
+
+    function withdraw(amount){
+      if(bank-amount >= 0){
+        bank = bank-amount;
+        wallet = wallet+amount;
+        document.getElementById('wallet').innerText = wallet;
+        document.getElementById('bank').innerText = bank;
+      } else {
+        console.log(cantWithdraw)
+        document.getElementById('message').innerText = cantWithdraw;
+      }
+    }
+
+    function deposit(amount){
+
+      if(wallet-amount >= 0){
+        bank = bank+amount;
+        wallet = wallet-amount;
+        document.getElementById('wallet').innerText = wallet;
+        document.getElementById('bank').innerText = bank;
+      } else {
+        console.log(cantDeposit);
+        document.getElementById('message').innerText = cantDeposit;
+      }
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Elv Project 4</title>
+</head>
+<body>
+  
+
+  <script>
+
+    let data = [4, 6, 2, 7, 8, 2];
+
+    for(let i = 0; i<=10000000; i++){
+      data.push(i);
+    }
+
+    highForOf(data);
+    highMax(data);
+
+    function highForOf(data){
+      time = Date.now();
+      let highest = data[0];
+      for (const num of data) {
+        highest = (highest < num)? num:highest;
+      }
+      console.log(`highForOf(): This array's highest number is ${highest}`);
+      newTime=Date.now();
+      console.log(`highForOf(): The operation took ${newTime-time} miliseconds`);
+
+    }
+
+    function highMax(data){
+      time = Date.now();
+
+      let maxNume = data.reduce(function(a, b) {
+          return Math.max(a, b);
+      });
+      console.log(`highMax(): This array's highest number is ${maxNume}`);
+      newTime=Date.now();
+      console.log(`highMax(): The operation took ${newTime-time} miliseconds`);
+
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////
+
+    let data2 = [4, 6, 8, 3, 4, 7, 8, 2, 4, 8];
+
+    for(let i = 0; i<=10000000; i++){
+      data2.push(i);
+    }
+
+    getMostNums(data2);
+
+    function getMostNums(data) {
+
+      time = Date.now();
+
+      let numsObject = {};
+      let returnArray = [];
+      let highestOccurenses = 1;
+
+      for(num of data){
+
+        numsObject[num] = (typeof(numsObject[num]) === 'number')? ++numsObject[num] : 1;
+        
+        if(numsObject[num] === highestOccurenses){
+          returnArray.push(num);
+        } else if (numsObject[num] > highestOccurenses) {
+          returnArray = [num];
+          highestOccurenses++;
+        }
+
+      }
+      
+      console.log(`The number${(returnArray.length>1)?'s':''} with most occurences ${(returnArray.length>1)?'are':'is'}: ${returnArray.toString()}`);
+
+
+      newTime=Date.now();
+      console.log(`getMostNums(): The operation took ${newTime-time} miliseconds`);
+      
+    };
+
+
+    
+
+
+  </script>
+
+</body>
+</html>
